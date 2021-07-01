@@ -1,10 +1,17 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { createNativeStackNavigator } from "react-native-screens/native-stack";
+import Onboard from "../screens/auth/Onboard";
+
+const Stack = createNativeStackNavigator();
 
 export default function MainStack() {
   return (
-    <View>
-      <Text></Text>
-    </View>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Onboard"
+        component={Onboard}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
   );
 }

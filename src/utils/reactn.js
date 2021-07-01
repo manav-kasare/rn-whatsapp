@@ -1,9 +1,7 @@
 import { setGlobal } from "reactn";
-import { dark, light } from "./constants";
 
-export default function ({ isDark }) {
+export default function () {
   setGlobal({
     user: null,
-    constants: isDark ? dark : light,
   });
 }

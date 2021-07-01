@@ -1,12 +1,11 @@
 {
   "name": "RNWhatsapp",
   "displayName": "RNWhatsapp",
+  "backgroundColor": "#000000",
   "expo": {
     "name": "RNWhatsapp",
     "slug": "RNWhatsapp",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"]
   }
 }

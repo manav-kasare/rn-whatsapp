@@ -1,22 +1,16 @@
 import { NavigationContainer } from "@react-navigation/native";
-import React from "react";
-import { useEffect } from "react";
-import { StyleSheet } from "react-native";
-import { useGlobal } from "reactn";
 import firebase from "firebase";
-import MainStack from "./src/components/navigation/MainStack";
-import AuthStack from "./src/components/navigation/AuthStack";
-import {
-  Provider as PaperProvider,
-  DarkTheme as PaperDarkTheme,
-  DefaultTheme as PaperDefaultTheme,
-} from "react-native-paper";
+import React, { useEffect } from "react";
 import { useColorScheme } from "react-native";
 import {
-  NavigationContainer,
-  DefaultTheme,
-  DarkTheme,
-} from "@react-navigation/native";
+  DarkTheme as PaperDarkTheme,
+  DefaultTheme as PaperDefaultTheme,
+  Provider as PaperProvider,
+} from "react-native-paper";
+import { useGlobal } from "reactn";
+import AuthStack from "./src/components/navigation/AuthStack";
+import MainStack from "./src/components/navigation/MainStack";
+import Toast from "react-native-toast-message";
 
 const MyDefaultTheme = {
   dark: false,
@@ -41,8 +35,9 @@ const MyDarkTheme = {
   },
 };
 const MyPaperDarkTheme = {
+  ...PaperDarkTheme,
   dark: true,
-  roundness: 15,
+  roundness: 25,
   colors: {
     ...PaperDarkTheme.colors,
     primary: "#FFD369",
@@ -50,14 +45,16 @@ const MyPaperDarkTheme = {
     background: "#222831",
     surface: "#393E46",
     text: "#EEEEEE",
-    border: "rgb(199, 199, 204)",
+    border: "transparent",
     notification: "#FFD369",
   },
 };
 const MyOaoerDefaultTheme = {
+  ...PaperDefaultTheme,
   dark: false,
+  roundness: 25,
   colors: {
-    ...PaperDarkTheme.colors,
+    ...PaperDefaultTheme.colors,
     primary: "#FFD369",
     accent: "#867AE9",
     background: "rgb(242, 242, 242)",
@@ -78,12 +75,15 @@ export default function App() {
 
   return (
     <PaperProvider
-      theme={scheme === "dark" ? MyPaperDarkTheme : MyOaoerDefaultTheme}
+      theme={MyPaperDarkTheme}
+      // theme={scheme === "dark" ? MyPaperDarkTheme : MyOaoerDefaultTheme}
     >
       <NavigationContainer
-        theme={scheme === "dark" ? MyDarkTheme : MyDefaultTheme}
+        theme={MyDarkTheme}
+        // theme={scheme === "dark" ? MyDarkTheme : MyDefaultTheme}
       >
         {user ? <MainStack /> : <AuthStack />}
+        <Toast ref={(ref) => Toast.setRef(ref)} />
       </NavigationContainer>
     </PaperProvider>
   );
