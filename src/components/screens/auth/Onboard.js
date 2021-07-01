@@ -9,6 +9,7 @@ import {
   FirebaseRecaptchaBanner,
 } from "expo-firebase-recaptcha";
 import { config } from "../../../utils/firebase";
+import Toast from "react-native-toast-message";
 
 export default function Onboard({ navigation }) {
   const [phone, setPhone] = useState("+1");
@@ -30,11 +31,7 @@ export default function Onboard({ navigation }) {
     } catch (err) {
       setLoading(false);
       console.log("Error", err);
-      //   switch (
-      //     err.code
-      //     // case 'aut'
-      //   ) {
-      //   }
+      Toast.show({ type: "error", text1: "Error", text2: err.message });
     }
   };
 

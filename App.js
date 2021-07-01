@@ -83,7 +83,7 @@ export default function App() {
         // theme={scheme === "dark" ? MyDarkTheme : MyDefaultTheme}
       >
         {user ? <MainStack /> : <AuthStack />}
-        <Toast ref={(ref) => Toast.setRef(ref)} />
+        <Toast ref={(ref) => Toast.setRef(ref)} position="bottom" />
       </NavigationContainer>
     </PaperProvider>
   );
